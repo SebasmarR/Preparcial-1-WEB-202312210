@@ -37,6 +37,7 @@ export default function List() {
     }
 
     async function editAuthorSubmit(id: number, e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
         console.log("Editando autor con id:", id);
         console.log(editAuthor);
         const response = await fetch("http://localhost:8080/api/authors/" + id, {
