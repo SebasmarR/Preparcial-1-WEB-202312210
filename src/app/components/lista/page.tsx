@@ -30,7 +30,7 @@ export default function List() {
             setEditAuthor({
                 name: author.name,
                 description: author.description,
-                birthDate: author.birthDate ? author.birthDate.split("T")[0] : "",
+                birthDate: author.birthDate,
                 image: author.image
             });
         }
@@ -40,6 +40,7 @@ export default function List() {
         e.preventDefault();
         console.log("Editando autor con id:", id);
         console.log(editAuthor);
+        editAuthor.birthDate = editAuthor.birthDate.split("T")[0];
         const response = await fetch("http://localhost:8080/api/authors/" + id, {
             method: "PUT",
             headers: {
