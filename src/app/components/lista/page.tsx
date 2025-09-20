@@ -63,7 +63,7 @@ export default function List() {
         console.log("Eliminando autor con id:", id);
         console.log(author);
         const books = author.books;
-        if (books.length > 0) {
+        if (books && books.length > 0) {
             for (const book of books) {
                 const deleteAuthorBook = await fetch(`http://localhost:8080/api/authors/${id}/books/${book.id}`, {
                     method: "DELETE"
@@ -75,7 +75,7 @@ export default function List() {
             console.log(`Libros del autor con id ${id} eliminados`);
         }
         const prizes = author.prizes;
-        if (prizes.length > 0) {
+        if (prizes && prizes.length > 0) {
             for (const prize of prizes) {
                 const deleteAuthorPrize = await fetch(`http://localhost:8080/api/prizes/${prize.id}/author`, {
                     method: "DELETE"
